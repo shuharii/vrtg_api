@@ -1,0 +1,7 @@
+CREATE TABLE clan_schema.clans (
+    id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name       VARCHAR(120) NOT NULL,
+    region     VARCHAR(8),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    CONSTRAINT chk_region_alpha2 CHECK (region ~ '^[A-Z]{2}$')
+);
