@@ -108,7 +108,7 @@ def list_clans(
         )
         where_q = sql.SQL("")
         params = []
-        if region is not None:
+        if region:
             where_q = sql.SQL(" WHERE region = %s")
             params.append(region)
 
@@ -200,4 +200,5 @@ def shutdown_event():
     global conn_pool
     if conn_pool is not None:
         conn_pool.closeall()
+
         conn_pool = None
