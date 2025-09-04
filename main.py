@@ -46,9 +46,9 @@ class CreateClanResponse(BaseModel):
     message: str = "Clan created successfully."
 
 class Clan(BaseModel):
-    id: str  # UUID string
-    name: str
-    region: str
+    id: Optional[str]
+    name: Optional[str] = None
+    region: Optional[str] = None
     created_at: Optional[datetime] = None
 
 # ---- ROUTES ----
@@ -202,3 +202,4 @@ def shutdown_event():
         conn_pool.closeall()
 
         conn_pool = None
+
